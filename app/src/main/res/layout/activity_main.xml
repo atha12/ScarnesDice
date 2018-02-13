@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.atharva.scarnesdice.MainActivity"
+    android:background="@drawable/images">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:text="Your Score: 0"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/yscore"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:text="Computer Score: 0"
+        android:textSize="20sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/cscore"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/yscore"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:id="@+id/dice"
+        android:src="@drawable/dice1" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hold"
+        android:textSize="20sp"
+        android:padding="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/dice"
+        android:id="@+id/hold"
+        android:layout_marginTop="30dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"/>
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/hold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/dice"
+        android:padding="15dp"
+        android:text="Reset"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:layout_marginLeft="20dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"/>
+    <Button
+        android:id="@+id/roll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/hold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/dice"
+        android:padding="15dp"
+        android:text="Roll"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:layout_marginRight="20dp"
+        android:background="#000000"
+        android:textColor="#FFFFFF"/>
+
+    <TextView
+        android:id="@+id/tscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:text="Current turn score: 0"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>
