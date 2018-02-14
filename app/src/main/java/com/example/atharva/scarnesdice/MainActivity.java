@@ -105,11 +105,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 uos+=uts;
                 uts=0;
-                win();
                 tscore.setText("Current Turn Score: " + 0);
                 yscore.setText("Your Score: " + uos);
-
-                computerTurn();
+                if(!win()) {
+                    computerTurn();
+                }
             }
         });
 
@@ -211,24 +211,28 @@ public class MainActivity extends AppCompatActivity {
         win();
         cscore.setText("Computer Score: " + cos);
     }
-    public void win(){
+    public boolean win(){
 
         if(uos>=100){
             Toast.makeText(this, "User wins congrats", Toast.LENGTH_SHORT).show();
             roll.setVisibility(View.INVISIBLE);
             hold.setVisibility(View.INVISIBLE);
+            return true;
         }
         if(cos>=100){
             Toast.makeText(this, "Computer wins congrats", Toast.LENGTH_SHORT).show();
             roll.setVisibility(View.INVISIBLE);
             hold.setVisibility(View.INVISIBLE);
+            return true;
 
         }
         if(uos==cos && uos==100){
             Toast.makeText(this, "Game tied", Toast.LENGTH_SHORT).show();
             roll.setVisibility(View.INVISIBLE);
             hold.setVisibility(View.INVISIBLE);
+            return true;
         }
+        return false;
 
     }
     /*public void slow(final int a){
