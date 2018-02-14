@@ -14,15 +14,14 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
 
 
-    int uts=0,uos=0,cts=0,cos=0, c;
+    int uts = 0, uos = 0, cts = 0, cos = 0, c;
 
-     ImageView dice;
+    ImageView dice;
 
-    TextView yscore,cscore,tscore;
+    TextView yscore, cscore, tscore;
 
 
-
-     Button reset,roll,hold;
+    Button reset, roll, hold;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,47 +50,37 @@ public class MainActivity extends AppCompatActivity {
                 Random rand = new Random();
                 int n = rand.nextInt(6) + 1;
 
-                if(n==1){
+                if (n == 1) {
 
                     dice.setImageResource(R.drawable.dice1);
 
 
-
-                }
-                else if(n==2){
+                } else if (n == 2) {
                     dice.setImageResource(R.drawable.dice2);
 
-                }
-                else if(n==3){
+                } else if (n == 3) {
                     dice.setImageResource(R.drawable.dice3);
 
-                }
-                else if(n==4){
+                } else if (n == 4) {
                     dice.setImageResource(R.drawable.dice4);
 
-                }
-                else if(n==5){
+                } else if (n == 5) {
                     dice.setImageResource(R.drawable.dice5);
 
 
-                }
-                else if(n==6){
+                } else if (n == 6) {
                     dice.setImageResource(R.drawable.dice6);
 
                 }
 
 
-
-
-
-                if(n==1){
-                    uts=0;
+                if (n == 1) {
+                    uts = 0;
                     computerTurn();
 
 
-                }
-                else{
-                    uts+=n;
+                } else {
+                    uts += n;
 
                 }
 
@@ -103,12 +92,14 @@ public class MainActivity extends AppCompatActivity {
         hold.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uos+=uts;
-                uts=0;
+                uos += uts;
+                uts = 0;
                 tscore.setText("Current Turn Score: " + 0);
                 yscore.setText("Your Score: " + uos);
-                if(!win()) {
+                if (!win()) {
+
                     computerTurn();
+
                 }
             }
         });
@@ -116,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uos=0;
-                uts=0;
-                cts=0;
-                cos=0;
+                uos = 0;
+                uts = 0;
+                cts = 0;
+                cos = 0;
                 tscore.setText("Current Turn Score: " + 0);
                 yscore.setText("Your Score: " + 0);
                 cscore.setText("Computer Score: " + 0);
@@ -132,62 +123,58 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
     }
 
 
+    public void computerTurn() {
 
 
-    public void computerTurn(){
+        // Thread.sleep(200);
 
         roll.setVisibility(View.INVISIBLE);
 
         hold.setVisibility(View.INVISIBLE);
 
-        c=0;
+        c = 0;
 
-        while(true){
+        while (true) {
 
 
             Random rand = new Random();
             int n = rand.nextInt(6) + 1;
 
-            if(n==1){
+            if (n == 1) {
 
-               dice.setImageResource(R.drawable.dice1);
+                dice.setImageResource(R.drawable.dice1);
 
 
-            }
-            else if(n==2){
-               dice.setImageResource(R.drawable.dice2);
+            } else if (n == 2) {
+                dice.setImageResource(R.drawable.dice2);
 
-            }
-            else if(n==3){
-             dice.setImageResource(R.drawable.dice3);
-            }
-            else if(n==4){
-            dice.setImageResource(R.drawable.dice4);
-            }
-            else if(n==5){
+            } else if (n == 3) {
+                dice.setImageResource(R.drawable.dice3);
+
+            } else if (n == 4) {
+                dice.setImageResource(R.drawable.dice4);
+
+            } else if (n == 5) {
                 dice.setImageResource(R.drawable.dice5);
 
-
-            }
-            else if(n==6){
+            } else if (n == 6) {
 
                 dice.setImageResource(R.drawable.dice6);
+
             }
 
-            if(n==1){
-                cts=0;
+            if (n == 1) {
+                cts = 0;
                 computerTurnDone();
                 break;
-            }
-            else{
-                cts+=n;
+            } else {
+                cts += n;
             }
 
-            if(c>=7){
+            if (c >= 7) {
 
                 computerTurnDone();
                 break;
@@ -200,33 +187,35 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    public void computerTurnDone(){
+
+    public void computerTurnDone() {
 
         Toast.makeText(this, "Computer turn over", Toast.LENGTH_SHORT).show();
         roll.setVisibility(View.VISIBLE);
         hold.setVisibility(View.VISIBLE);
-        c=0;
-        cos+=cts;
-        cts=0;
-        win();
+        c = 0;
+        cos += cts;
+        cts = 0;
         cscore.setText("Computer Score: " + cos);
+        win();
     }
-    public boolean win(){
 
-        if(uos>=100){
+    public boolean win() {
+
+        if (uos >= 100) {
             Toast.makeText(this, "User wins congrats", Toast.LENGTH_SHORT).show();
             roll.setVisibility(View.INVISIBLE);
             hold.setVisibility(View.INVISIBLE);
             return true;
         }
-        if(cos>=100){
+        if (cos >= 100) {
             Toast.makeText(this, "Computer wins congrats", Toast.LENGTH_SHORT).show();
             roll.setVisibility(View.INVISIBLE);
             hold.setVisibility(View.INVISIBLE);
             return true;
 
         }
-        if(uos==cos && uos==100){
+        if (uos == cos && uos == 100) {
             Toast.makeText(this, "Game tied", Toast.LENGTH_SHORT).show();
             roll.setVisibility(View.INVISIBLE);
             hold.setVisibility(View.INVISIBLE);
@@ -235,18 +224,6 @@ public class MainActivity extends AppCompatActivity {
         return false;
 
     }
-    /*public void slow(final int a){
-       final Handler handler = new Handler();
-        Runnable runnable = new Runnable() {
 
 
-            public void run() {
-                dice.setImageResource(a);
-
-                handler.postDelayed(this, 2000);
-            }
-        };
-        handler.postDelayed(runnable, 2000);
-        //handler.removeCallbacks(null);
-    }*/
 }
